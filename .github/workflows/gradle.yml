@@ -3,6 +3,8 @@ name: Java CI with Gradle
 on:
   push:
     branches: [1.16]
+    tags:
+      - 'v*.*.*'
   pull_request:
     branches: [1.16]
 
@@ -52,7 +54,7 @@ jobs:
           rm -f ~/.gradle/caches/modules-2/gc.properties
 
   deploy:
-    runs-on: ubunut-latest
+    runs-on: ubuntu-latest
     needs: build
 
     steps:
@@ -88,7 +90,7 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: LazierAE2.jar
+          name: LazierAE2-${{ env.MINECRAFT_VERSION }}-${{ env.MOD_VERSION }}.jar
           path: ${{ env.JAR_FILE }}
 
       - name: Release
