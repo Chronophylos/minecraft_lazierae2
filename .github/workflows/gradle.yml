@@ -40,11 +40,11 @@ jobs:
         run: chmod +x gradlew
 
       - name: Build with Gradle
-        run: ./gradlew build
+        run: ./gradlew build --no-daemon
       - name: Run Gradle Checks
-        run: ./gradlew check
+        run: ./gradlew check --no-daemon
       - name: Run Unit Tests with Gradle
-        run: ./gradlew test
+        run: ./gradlew test --no-daemon
 
       - name: Cleanup Gradle Cache
         # Remove some files from the Gradle cache, so they aren't cached by GitHub Actions.
@@ -80,7 +80,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Assemble Jar
-        run: ./gradlew jar
+        run: ./gradlew jar --no-daemon
 
       - name: Find the jar
         run: echo "JAR_FILE=$(find build/libs/lazierae2-*-*.jar)" >> $GITHUB_ENV
