@@ -70,7 +70,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: ./gradlew build sonarqube --info
 
-   tests:
+  tests:
     name: Tests
     runs-on: ubuntu-latest
     steps:
