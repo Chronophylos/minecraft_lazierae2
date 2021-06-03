@@ -1,12 +1,10 @@
-name: Java CI with Gradle
+name: Release
 
 on:
   push:
     branches: [1.16]
     tags:
       - 'v1.16-*.*.*'
-  pull_request:
-    branches: [1.16]
 
 env:
   JAVA_VERSION: 8
