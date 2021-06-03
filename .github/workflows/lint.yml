@@ -39,7 +39,7 @@ jobs:
       - name: Run Prettier YAML
         run: npx prettier --check "**/*.{yml,yaml}"
 
-   sonarlint:
+  sonarlint:
     name: Sonar Lint
     runs-on: ubuntu-latest
     steps:
