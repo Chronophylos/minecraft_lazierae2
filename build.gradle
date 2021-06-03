@@ -12,6 +12,18 @@ buildscript {
 apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 
+plugins {
+  id "org.sonarqube" version "3.2.0"
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectKey", "RLNT_minecraft_lazierae2"
+    property "sonar.organization", "rlnt"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
+}
+
 group = "${mod_base_package}.${mod_id}"
 version = "${minecraft_version}-${mod_version}"
 archivesBaseName = mod_id
