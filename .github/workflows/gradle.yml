@@ -101,5 +101,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: ${{ env.MINECRAFT_VERSION }}-${{ env.MOD_VERSION }}
           files: ${{ env.JAR_FILE }}
