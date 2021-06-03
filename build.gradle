@@ -9,12 +9,12 @@ buildscript {
     }
 }
 
-apply plugin: 'net.minecraftforge.gradle'
-apply plugin: 'eclipse'
-
 plugins {
   id "org.sonarqube" version "3.2.0"
 }
+
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'eclipse'
 
 sonarqube {
   properties {
