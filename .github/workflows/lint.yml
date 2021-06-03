@@ -1,33 +1,26 @@
 name: Check
-
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
   gradle-wrapper-validation:
-    runs-on: ubuntu-latest
-
     name: Validate Gradle Wrapper
-
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
       - name: Gradle Wrapper Validation
         uses: gradle/wrapper-validation-action@v1.0.3
 
   prettier:
-    runs-on: ubuntu-latest
-
     name: Prettier
-
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-
       - name: Setup Node
         uses: actions/setup-node@v2
         with:
@@ -37,10 +30,8 @@ jobs:
         with:
           path: node_modules
           key: ${{ runner.os }}-npm
-
       - name: Install NPM Packages
         run: npm ci
-
       - name: Run Prettier
         run: npx prettier --check .
 
@@ -55,7 +46,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-
       - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
@@ -68,7 +58,6 @@ jobs:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/gradle-wrapper.properties') }}
           restore-keys: ${{ runner.os }}-gradle
-
       - name: Analyze
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
@@ -76,10 +65,8 @@ jobs:
         run: ./gradlew sonarqube --info
 
   tests:
-    runs-on: ubuntu-latest
-
     name: Tests
-
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
@@ -88,13 +75,11 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
-
       - name: Cache Gradle packages
         uses: actions/cache@v1
         with:
           path: ~/.gradle/caches
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle', '**/gradle-wrapper.properties') }}
           restore-keys: ${{ runner.os }}-gradle
-
       - name: Test and Check
         run: ./gradlew test check --info
