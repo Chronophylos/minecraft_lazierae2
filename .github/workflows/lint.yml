@@ -41,14 +41,8 @@ jobs:
       - name: Install NPM Packages
         run: npm ci
 
-      - name: Run Prettier Java
-        run: npx prettier --check "**/*.java"
-
-      - name: Run Prettier JSON
-        run: npx prettier --check "**/*.json"
-
-      - name: Run Prettier YAML
-        run: npx prettier --check "**/*.{yml,yaml}"
+      - name: Run Prettier
+        run: npx prettier --check .
 
   sonarlint:
     name: Sonar Lint
@@ -102,5 +96,5 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
 
-      - name: Test and check
+      - name: Test and Check
         run: ./gradlew test check --info
