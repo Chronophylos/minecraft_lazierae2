@@ -88,7 +88,7 @@ jobs:
         run: echo "JAR_FILE=$(find build/libs/lazierae2-*-*.jar)" >> $GITHUB_ENV
 
       - name: Extract Minecraft and Mod Version
-        run: echo ${$(find build/libs/lazierae2-*-*.jar)%.*} | awk -F- '{ print "MINECRAFT_VERSION=" $2; print "MOD_VERSION=" $3; }' >> $GITHUB_ENV
+        run: echo ${JAR_FILE%.*} | awk -F- '{ print "MINECRAFT_VERSION=" $2; print "MOD_VERSION=" $3; }' >> $GITHUB_ENV
 
       - uses: actions/upload-artifact@v2
         with:
@@ -102,4 +102,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: ${{ env.MINECRAFT_VERSION }}-${{ env.MOD_VERSION }}
-          file: ${{ env.JAR_FILE }}
+          files: ${{ env.JAR_FILE }}
