@@ -159,14 +159,13 @@ dependencies {
     // minecraft
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
-    // applied energistics
-    compile fg.deobf("appeng:appliedenergistics2:${appeng_version}")
-    // just enough items
-    compileOnly fg.deobf("mezz.jei:jei-1.16.5:${jei_version}:api")
-    // craft tweaker
-    compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:${crt_version}")
+    // dev dependencies
+    compile fg.deobf("appeng:appliedenergistics2:${appeng_version}") // applied energistics
+    compileOnly fg.deobf("mezz.jei:jei-1.16.5:${jei_version}:api") // just enough items
+    // compile fg.deobf("com.blamejared.crafttweaker:CraftTweaker-1.16.5:${crt_version}") // crafttweaker
+    compile fg.deobf("curse.maven:crt-239197:3335643")
 
-    // dev dependencies - get these from cursemaven
+    // runtime dependencies - get these from cursemaven
     runtimeOnly fg.deobf("curse.maven:jei-238222:3335737") // JEI - 7.7.0.103
     runtimeOnly fg.deobf("curse.maven:top-245211:3319255") // TOP - 3.1.4
     runtimeOnly fg.deobf("curse.maven:solargen-336538:3177119") // SolarGeneration - 2.4.0
