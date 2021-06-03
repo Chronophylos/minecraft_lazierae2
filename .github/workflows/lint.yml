@@ -96,7 +96,6 @@ jobs:
       - name: Dump
         run: ./gradlew properties dependencies dependencyInsight --info
 
-
   tests:
     runs-on: ubuntu-latest
 
