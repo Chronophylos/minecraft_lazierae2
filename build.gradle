@@ -141,6 +141,10 @@ repositories {
         name 'Progwml6 maven'
         url 'https://dvs1.progwml6.com/files/maven/'
     }
+    maven { // JEI mirror
+        name 'ModMaven'
+        url 'https://modmaven.k-4u.nl'
+    }
     maven { // CraftTweaker
         name 'BlameJared'
         url 'https://maven.blamejared.com'
