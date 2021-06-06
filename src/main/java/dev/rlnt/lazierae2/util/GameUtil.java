@@ -1,9 +1,11 @@
 package dev.rlnt.lazierae2.util;
 
+import appeng.core.Api;
 import javax.annotation.Nullable;
+import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.RecipeManager;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.server.ServerLifecycleHooks;
 
 public class GameUtil {
 
@@ -20,6 +22,16 @@ public class GameUtil {
      */
     public static RecipeManager getRecipeManager(@Nullable World world) {
         if (world != null && world.getServer() != null) return world.getServer().getRecipeManager();
-        return ServerLifecycleHooks.getCurrentServer().getRecipeManager();
+        assert Minecraft.getInstance().level != null;
+        return Minecraft.getInstance().level.getRecipeManager();
+    }
+
+    /**
+     * Checks if the item is a valid processor upgrade.
+     * @param stack the ItemStack to check
+     * @return true if the item is a valid processor upgrade, false otherwise
+     */
+    public static boolean isUpgrade(ItemStack stack) {
+        return stack.getItem() == Api.instance().definitions().materials().cardSpeed().item();
     }
 }
